@@ -58,7 +58,7 @@ class _CloverState extends State<Clover> {
 
   // 다음에 사용할 색상
   String nextColor = "Red";  
-  
+
   // 점수 변수
   int score = 0;
 
@@ -216,22 +216,22 @@ class _CloverState extends State<Clover> {
       crossAxisAlignment: CrossAxisAlignment.center,
 
       children: [     
-        SizedBox( height: 10 ),
+        SizedBox( height: 50 ),
 
         SizedBox(
-          width: 250,
+          width: (MediaQuery.of(context).size.width/1.5),
           height: 100,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             
             children: [
               // 점수판 
               SizedBox(
-                height: 50,
+                height: 100,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,                  
                   
                   children: [
@@ -239,10 +239,9 @@ class _CloverState extends State<Clover> {
                       'SCORE',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 12,
+                        fontSize: 24,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
-                        height: 0,
                       ),
                     ),
 
@@ -257,10 +256,9 @@ class _CloverState extends State<Clover> {
                           '$score',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20,
+                            fontSize: 24,
                             fontFamily: 'Inter',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
+                            fontWeight: FontWeight.w400,                            
                           ),
                         ),
                       ],
@@ -275,51 +273,31 @@ class _CloverState extends State<Clover> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [                    
-                  const Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
+                  Text(
+                      'NEXT',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
+                      ),
                     ),
-                  ),
                   
                   const SizedBox(height: 10),
               
                   Container(
-                    width: 49,
-                    height: 49,
-                    //padding: const EdgeInsets.all(1),
-                    //clipBehavior: Clip.antiAlias,
-                    decoration: ShapeDecoration(
-                      //color: Colors.brown[300],
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(width: 1),
-                        borderRadius: BorderRadius.circular(10),
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/$nextColor.png'),
+                        fit: BoxFit.fitHeight,
+                        onError: (exception, stackTrace) {
+                          print('Failed to load image for color: $nextColor');
+                        },
                       ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 45,
-                          height: 45,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/$nextColor.png'),
-                              fit: BoxFit.fitHeight,
-                              onError: (exception, stackTrace) {
-                                print('Failed to load image for color: $nextColor');
-                              },
-                            ),
-                            
-                          ),
-                        ),
-                      ],
+                      
                     ),
                   ),
                 ],
@@ -329,7 +307,7 @@ class _CloverState extends State<Clover> {
         ),
         
         // 5x5 보드판
-        Expanded(
+        Flexible(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -340,8 +318,8 @@ class _CloverState extends State<Clover> {
                     return GestureDetector(
                       onTap: () => _onBoxTapped(row, col),
                       child: Container(
-                        width: 47,  // 박스의 너비
-                        height: 47, // 박스의 높이
+                        width: (MediaQuery.of(context).size.height - 100)/10,  // 박스의 너비
+                        height: (MediaQuery.of(context).size.height - 100)/10, // 박스의 높이
                         margin: EdgeInsets.all(3), // 박스 간 간격
                         decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 95, 79, 73),
@@ -351,8 +329,8 @@ class _CloverState extends State<Clover> {
                         child: Center(
                           child: board[row][col]
                             ? Container(
-                                width: 40,
-                                height: 40,
+                                width: (MediaQuery.of(context).size.height)/15,
+                                height: (MediaQuery.of(context).size.height)/15,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                   image: AssetImage('assets/${colors[row][col]}.png'),
