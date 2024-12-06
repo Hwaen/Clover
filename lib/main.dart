@@ -57,8 +57,8 @@ class _CloverState extends State<Clover> {
   ];
 
   // 다음에 사용할 색상
-  String nextColor = "";  
-
+  String nextColor = "Red";  
+  
   // 점수 변수
   int score = 0;
 
@@ -210,15 +210,14 @@ class _CloverState extends State<Clover> {
   }
   
   @override
-  Widget build(BuildContext context) {
-    _selectNextColor();
+  Widget build(BuildContext context) {    
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,     
       crossAxisAlignment: CrossAxisAlignment.center,
 
       children: [     
         SizedBox( height: 10 ),
-        
+
         SizedBox(
           width: 250,
           height: 100,
