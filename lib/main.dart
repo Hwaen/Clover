@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
                   'Bingo Game',
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 20,
+                    fontSize: 24,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
                     height: 0,
@@ -284,7 +284,7 @@ class _CloverState extends State<Clover> {
                       ),
                     ),
                   
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
               
                   Container(
                     width: 50,
