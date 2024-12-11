@@ -112,12 +112,13 @@ class _CloverState extends State<Clover> {
         child: Container(
           color: Colors.black54, // 약간 투명한 검정 배경
           child: Center(
-            child: Stack(
-              alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,     
+              crossAxisAlignment: CrossAxisAlignment.center,
+
               children: [
                 // 게임 오버 텍스트
-                const Positioned(                  
-                  top: 200,                  
+                Container(      
                   child: Text(
                     'Game Over',
                     style: TextStyle(
@@ -128,9 +129,11 @@ class _CloverState extends State<Clover> {
                   ),
                 ),
 
+                SizedBox(height: 70),
+
                 // 재시작 버튼
-                Positioned(
-                  top: 300,
+                Container(
+                  //alignment: Alignment.center,                  
                   child: ElevatedButton(
                     onPressed: _restartGame, // 버튼 클릭 시 게임 재시작
                     child: const Text('Restart'),
@@ -246,23 +249,17 @@ class _CloverState extends State<Clover> {
                     ),
 
                     SizedBox(height: 5),
-                    
-                    Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                        Text(
-                          '$score',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w400,                            
-                          ),
-                        ),
-                      ],
+
+                    Text(
+                      '$score',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,                            
+                      ),
                     ),
+
                   ],
                 ),
               ),
